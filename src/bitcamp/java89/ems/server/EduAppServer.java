@@ -32,13 +32,13 @@ public class EduAppServer {
 
   public EduAppServer() {
     // 클라이언트 요청을 처리할 Command 구현체를 준비
-    
+    //교재
     commandMap.put("textbook/add", new TextBookAddController());
     commandMap.put("textbook/list", new TextBookListController());
     commandMap.put("textbook/view", new TextBookViewController());
     commandMap.put("textbook/delete", new TextBookDeleteController());
     commandMap.put("textbook/update", new TextBookUpdateController());
-    
+    // 강사
     commandMap.put("teacher/list", new TeacherListController());
     commandMap.put("teacher/view", new TeacherViewController());
     commandMap.put("teacher/add", new TeacherAddController());
