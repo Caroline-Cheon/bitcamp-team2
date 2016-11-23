@@ -4,11 +4,6 @@ package bitcamp.java89.ems.server;
 import java.net.ServerSocket;
 import java.util.HashMap;
 
-import bitcamp.java89.ems.server.controller.ContactAddController;
-import bitcamp.java89.ems.server.controller.ContactDeleteController;
-import bitcamp.java89.ems.server.controller.ContactListController;
-import bitcamp.java89.ems.server.controller.ContactUpdateController;
-import bitcamp.java89.ems.server.controller.ContactViewController;
 import bitcamp.java89.ems.server.controller.TextBookAddController;
 import bitcamp.java89.ems.server.controller.TextBookDeleteController;
 import bitcamp.java89.ems.server.controller.TextBookListController;
@@ -22,11 +17,7 @@ public class EduAppServer {
 
   public EduAppServer() {
     // 클라이언트 요청을 처리할 Command 구현체를 준비
-    commandMap.put("contact/list", new ContactListController());
-    commandMap.put("contact/view", new ContactViewController());
-    commandMap.put("contact/add", new ContactAddController());
-    commandMap.put("contact/delete", new ContactDeleteController());
-    commandMap.put("contact/update", new ContactUpdateController());
+    
     commandMap.put("textbook/add", new TextBookAddController());
     commandMap.put("textbook/list", new TextBookListController());
     commandMap.put("textbook/view", new TextBookViewController());
