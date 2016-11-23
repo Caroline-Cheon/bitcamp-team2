@@ -4,6 +4,11 @@ package bitcamp.java89.ems.server;
 import java.net.ServerSocket;
 import java.util.HashMap;
 
+import bitcamp.java89.ems.server.controller.ClassAddController;
+import bitcamp.java89.ems.server.controller.ClassDeleteController;
+import bitcamp.java89.ems.server.controller.ClassListController;
+import bitcamp.java89.ems.server.controller.ClassUpdateController;
+import bitcamp.java89.ems.server.controller.ClassViewController;
 import bitcamp.java89.ems.server.controller.TeacherAddController;
 import bitcamp.java89.ems.server.controller.TeacherDeleteController;
 import bitcamp.java89.ems.server.controller.TeacherListController;
@@ -35,6 +40,15 @@ public class EduAppServer {
     commandMap.put("teacher/update", new TeacherUpdateController());
     commandMap.put("teacher/delete", new TeacherDeleteController());
     
+    // 강의실
+    try { 
+      commandMap.put("class/add", new ClassAddController());
+      commandMap.put("class/list", new ClassListController());
+      commandMap.put("class/view", new ClassViewController());
+      commandMap.put("class/delete", new ClassDeleteController());
+      commandMap.put("class/update", new ClassUpdateController());
+    } catch (Exception e) {
+    }
   }
   private void service() throws Exception {
     ServerSocket ss = new ServerSocket(8888);
