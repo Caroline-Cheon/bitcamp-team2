@@ -12,9 +12,8 @@ import bitcamp.java89.ems.server.vo.TextBook;
 public class TextBookDao {
   static TextBookDao obj;
   
-  private String filename = "textbook-v1.8.data";
+  private String filename = "textbook-v1.7.data";
   private ArrayList<TextBook> list;
-  private boolean changed;
   
   private TextBookDao() {
     this.load();
@@ -24,10 +23,6 @@ public class TextBookDao {
       obj = new TextBookDao();
     }
     return obj;
-  }
-  
-  public boolean isChanged() {
-    return changed;
   }
   @SuppressWarnings("unchecked")
   private void load() {
@@ -60,7 +55,6 @@ public class TextBookDao {
     ObjectOutputStream out = new ObjectOutputStream(out0);
 
     out.writeObject(list);
-    changed = false;
 
     out.close();
     out0.close();
@@ -81,13 +75,21 @@ public class TextBookDao {
   
   synchronized public void insert(TextBook textbook) {
     list.add(textbook);
-    changed = true;
+    try {
+      this.save();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
   synchronized public void update(TextBook textbook) {
     for (int i = 0;i < list.size();i++) {
       if (list.get(i).getTitle().equals(textbook.getTitle())) {
         list.set(i, textbook);
-        changed = true;
+        try {
+          this.save();
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
         return;
       }
     }
@@ -97,7 +99,11 @@ public class TextBookDao {
     for (int i = 0; i < list.size();i++) {
       if (list.get(i).getTitle().equals(title)) {
         list.remove(i);
-        changed = true;
+        try {
+          this.save();
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
         return;
       }
     }

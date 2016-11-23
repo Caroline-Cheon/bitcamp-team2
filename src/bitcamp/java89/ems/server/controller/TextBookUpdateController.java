@@ -21,6 +21,7 @@ public class TextBookUpdateController implements Command {
     }
     
     TextBook textbook = new TextBook();
+    textbook.setTitle(paramMap.get("title"));
     textbook.setAuthor(paramMap.get("author"));
     textbook.setPress(paramMap.get("press"));
     textbook.setReleaseDate(Integer.parseInt(paramMap.get("releaseDate")));
