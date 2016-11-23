@@ -9,6 +9,11 @@ import bitcamp.java89.ems.server.controller.ClassDeleteController;
 import bitcamp.java89.ems.server.controller.ClassListController;
 import bitcamp.java89.ems.server.controller.ClassUpdateController;
 import bitcamp.java89.ems.server.controller.ClassViewController;
+import bitcamp.java89.ems.server.controller.LectureAddController;
+import bitcamp.java89.ems.server.controller.LectureDeleteController;
+import bitcamp.java89.ems.server.controller.LectureListController;
+import bitcamp.java89.ems.server.controller.LectureUpdateController;
+import bitcamp.java89.ems.server.controller.LectureViewController;
 import bitcamp.java89.ems.server.controller.TeacherAddController;
 import bitcamp.java89.ems.server.controller.TeacherDeleteController;
 import bitcamp.java89.ems.server.controller.TeacherListController;
@@ -40,6 +45,13 @@ public class EduAppServer {
     commandMap.put("teacher/update", new TeacherUpdateController());
     commandMap.put("teacher/delete", new TeacherDeleteController());
     
+    //강좌
+    commandMap.put("lecture/list", new LectureListController());
+    commandMap.put("lecture/view", new LectureViewController());
+    commandMap.put("lecture/add", new LectureAddController());
+    commandMap.put("lecture/delete", new LectureDeleteController());
+    commandMap.put("lecture/update", new LectureUpdateController());
+    
     // 강의실
     try { 
       commandMap.put("class/add", new ClassAddController());
@@ -47,6 +59,8 @@ public class EduAppServer {
       commandMap.put("class/view", new ClassViewController());
       commandMap.put("class/delete", new ClassDeleteController());
       commandMap.put("class/update", new ClassUpdateController());
+      
+      
     } catch (Exception e) {
     }
   }
